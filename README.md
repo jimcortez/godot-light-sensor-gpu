@@ -1,5 +1,9 @@
 # gotdot-light-sensor-gpu
 
+> **⚠️ WARNING: This project is not useful yet and is under active development.**
+> 
+> This is an experimental project in early development stages. The functionality is incomplete, unstable, and not ready for production use. Use at your own risk.
+
 A light sensor node that allows for efficient measurement of light values in 3d spaced, optimized for GPU throughput.
 
 ## Overview
