@@ -5,13 +5,19 @@ on:
     paths-ignore:
       - '.gitignore'
       - '*.md'
+  pull_request:
+    paths-ignore:
+      - '.gitignore'
+      - '*.md'
 
 jobs:
   lint:
     name: 🧹 Lint / 📜 C++
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - name: Run clang-format style check
         uses: jidicula/clang-format-action@v4.9.0
         with:
@@ -34,10 +40,14 @@ jobs:
 
     name: 🛠 Build / ${{ matrix.config.name }} (${{ matrix.build_type }})
     runs-on: ${{ matrix.config.os }}
+    
+    env:
+      # Limit parallel jobs to prevent system overload
+      CMAKE_BUILD_PARALLEL_LEVEL: 8
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: recursive
 
@@ -66,22 +76,37 @@ jobs:
           max-size: '10G'
           key: ${{ matrix.config.os }}-${{ matrix.build_type }}
 
-      - name: Configure
-        run: >
-          mkdir GDExtension-build
+      - name: Show build configuration
+        run: |
+          echo "Build configuration:"
+          echo "  OS: ${{ matrix.config.os }}"
+          echo "  Build Type: ${{ matrix.build_type }}"
+          echo "  Parallel Jobs: ${{ env.CMAKE_BUILD_PARALLEL_LEVEL }}"
+          echo "  CMake Version: $(cmake --version | head -n1)"
 
-          cmake
-          -B GDExtension-build
-          -G "Ninja"
-          -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
-          --install-prefix ${{ github.workspace }}/install-${{ matrix.build_type }}
-          .
+      - name: Configure (macOS/Linux)
+        if: matrix.config.os != 'windows-latest'
+        run: |
+          cmake -B gotdot-light-sensor-gpu-${{ matrix.build_type }} \
+                -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+                -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/gotdot-light-sensor-gpu-${{ matrix.build_type }}-install \
+                .
+
+      - name: Configure (Windows)
+        if: matrix.config.os == 'windows-latest'
+        run: |
+          cmake -B gotdot-light-sensor-gpu-${{ matrix.build_type }} \
+                -G "Visual Studio 17 2022" \
+                -A x64 \
+                -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+                -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/gotdot-light-sensor-gpu-${{ matrix.build_type }}-install \
+                .
 
       - name: Build
-        run: cmake --build GDExtension-build
+        run: cmake --build gotdot-light-sensor-gpu-${{ matrix.build_type }} --parallel 8
 
       - name: Install
-        run: cmake --install GDExtension-build
+        run: cmake --install gotdot-light-sensor-gpu-${{ matrix.build_type }}
 
       - name: Upload artifact (Debug)
         if: matrix.build_type == 'Debug'
@@ -89,7 +114,7 @@ jobs:
         with:
           name: ${{ github.event.repository.name }}-${{ matrix.config.short-name }}-Debug
           path: |
-            ${{ github.workspace }}/install-${{ matrix.build_type }}/*
+            ${{ github.workspace }}/gotdot-light-sensor-gpu-Debug-install/*
 
       - name: Upload artifact (Release)
         if: matrix.build_type == 'Release'
@@ -97,4 +122,4 @@ jobs:
         with:
           name: ${{ github.event.repository.name }}-${{ matrix.config.short-name }}-Release
           path: |
-            ${{ github.workspace }}/install-${{ matrix.build_type }}/*
+            ${{ github.workspace }}/gotdot-light-sensor-gpu-Release-install/*

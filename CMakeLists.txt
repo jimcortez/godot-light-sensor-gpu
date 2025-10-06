@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: Unlicense
+# SPDX-License-Identifier: MIT
 
 cmake_minimum_required( VERSION 3.22 )
 
@@ -27,7 +27,7 @@ if ( APPLE )
 endif()
 
 # Main project information
-project( GDExtensionTemplate
+project( gotdot-light-sensor-gpu
     LANGUAGES
         CXX
     VERSION
@@ -39,7 +39,7 @@ add_library( ${PROJECT_NAME} SHARED )
 
 target_compile_features( ${PROJECT_NAME}
     PRIVATE
-        cxx_std_17
+        cxx_std_20 
 )
 
 # LIB_ARCH is the architecture being built. It is set to the build system's architecture.

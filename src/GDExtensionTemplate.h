@@ -1,5 +1,5 @@
 #pragma once
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: MIT
 
 #include "godot_cpp/classes/object.hpp"
 

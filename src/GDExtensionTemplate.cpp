@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: MIT
 
 #include "godot_cpp/core/class_db.hpp"
 #include "godot_cpp/core/version.hpp"

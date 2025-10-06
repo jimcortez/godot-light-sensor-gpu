@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: Unlicense
+# SPDX-License-Identifier: MIT
 
 add_custom_target( templates
     SOURCES
