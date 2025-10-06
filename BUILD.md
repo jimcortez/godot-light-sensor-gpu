@@ -1,6 +1,6 @@
 # Build Instructions
 
-This document provides comprehensive instructions for building the `gotdot-light-sensor-gpu` Godot GDExtension project using CMake.
+This document provides comprehensive instructions for building the `godot-light-sensor-gpu` Godot GDExtension project using CMake.
 
 ## Prerequisites
 
@@ -58,8 +58,8 @@ cmake --preset release
 Build and install using the preset build directory:
 
 ```bash
-cmake --build gotdot-light-sensor-gpu-build --parallel 8
-cmake --install gotdot-light-sensor-gpu-build
+cmake --build godot-light-sensor-gpu-build --parallel 8
+cmake --install godot-light-sensor-gpu-build
 ```
 
 ## Build and Install
@@ -70,32 +70,32 @@ cmake --install gotdot-light-sensor-gpu-build
 
 ```bash
 # Create build directory and configure
-cmake -B gotdot-light-sensor-gpu-debug \
+cmake -B godot-light-sensor-gpu-debug \
       -DCMAKE_BUILD_TYPE=Debug \
-      -DCMAKE_INSTALL_PREFIX=./gotdot-light-sensor-gpu-debug-install \
+      -DCMAKE_INSTALL_PREFIX=./godot-light-sensor-gpu-debug-install \
       .
 
 # Build the project
-cmake --build gotdot-light-sensor-gpu-debug --parallel 8
+cmake --build godot-light-sensor-gpu-debug --parallel 8
 
 # Install the extension
-cmake --install gotdot-light-sensor-gpu-debug
+cmake --install godot-light-sensor-gpu-debug
 ```
 
 #### Release Build (macOS)
 
 ```bash
 # Create build directory and configure
-cmake -B gotdot-light-sensor-gpu-release \
+cmake -B godot-light-sensor-gpu-release \
       -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_INSTALL_PREFIX=./gotdot-light-sensor-gpu-release-install \
+      -DCMAKE_INSTALL_PREFIX=./godot-light-sensor-gpu-release-install \
       .
 
 # Build the project
-cmake --build gotdot-light-sensor-gpu-release --parallel 8
+cmake --build godot-light-sensor-gpu-release --parallel 8
 
 # Install the extension
-cmake --install gotdot-light-sensor-gpu-release
+cmake --install godot-light-sensor-gpu-release
 ```
 
 ### Linux Build (x86_64)
@@ -104,32 +104,32 @@ cmake --install gotdot-light-sensor-gpu-release
 
 ```bash
 # Create build directory and configure
-cmake -B gotdot-light-sensor-gpu-debug \
+cmake -B godot-light-sensor-gpu-debug \
       -DCMAKE_BUILD_TYPE=Debug \
-      -DCMAKE_INSTALL_PREFIX=./gotdot-light-sensor-gpu-debug-install \
+      -DCMAKE_INSTALL_PREFIX=./godot-light-sensor-gpu-debug-install \
       .
 
 # Build the project
-cmake --build gotdot-light-sensor-gpu-debug --parallel 8
+cmake --build godot-light-sensor-gpu-debug --parallel 8
 
 # Install the extension
-cmake --install gotdot-light-sensor-gpu-debug
+cmake --install godot-light-sensor-gpu-debug
 ```
 
 #### Release Build (Linux)
 
 ```bash
 # Create build directory and configure
-cmake -B gotdot-light-sensor-gpu-release \
+cmake -B godot-light-sensor-gpu-release \
       -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_INSTALL_PREFIX=./gotdot-light-sensor-gpu-release-install \
+      -DCMAKE_INSTALL_PREFIX=./godot-light-sensor-gpu-release-install \
       .
 
 # Build the project
-cmake --build gotdot-light-sensor-gpu-release --parallel 8
+cmake --build godot-light-sensor-gpu-release --parallel 8
 
 # Install the extension
-cmake --install gotdot-light-sensor-gpu-release
+cmake --install godot-light-sensor-gpu-release
 ```
 
 ### Windows Build (x86_64)
@@ -138,36 +138,36 @@ cmake --install gotdot-light-sensor-gpu-release
 
 ```bash
 # Create build directory and configure
-cmake -B gotdot-light-sensor-gpu-debug \
+cmake -B godot-light-sensor-gpu-debug \
       -G "Visual Studio 17 2022" \
       -A x64 \
       -DCMAKE_BUILD_TYPE=Debug \
-      -DCMAKE_INSTALL_PREFIX=./gotdot-light-sensor-gpu-debug-install \
+      -DCMAKE_INSTALL_PREFIX=./godot-light-sensor-gpu-debug-install \
       .
 
 # Build the project
-cmake --build gotdot-light-sensor-gpu-debug --config Debug
+cmake --build godot-light-sensor-gpu-debug --config Debug
 
 # Install the extension
-cmake --install gotdot-light-sensor-gpu-debug --config Debug
+cmake --install godot-light-sensor-gpu-debug --config Debug
 ```
 
 #### Release Build (Windows)
 
 ```bash
 # Create build directory and configure
-cmake -B gotdot-light-sensor-gpu-release \
+cmake -B godot-light-sensor-gpu-release \
       -G "Visual Studio 17 2022" \
       -A x64 \
       -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_INSTALL_PREFIX=./gotdot-light-sensor-gpu-release-install \
+      -DCMAKE_INSTALL_PREFIX=./godot-light-sensor-gpu-release-install \
       .
 
 # Build the project
-cmake --build gotdot-light-sensor-gpu-release --config Release
+cmake --build godot-light-sensor-gpu-release --config Release
 
 # Install the extension
-cmake --install gotdot-light-sensor-gpu-release --config Release
+cmake --install godot-light-sensor-gpu-release --config Release
 ```
 
 ## Build Output
@@ -175,21 +175,21 @@ cmake --install gotdot-light-sensor-gpu-release --config Release
 After a successful build and install, you'll find the following structure:
 
 ```text
-gotdot-light-sensor-gpu-{debug|release}-install/
-└── gotdot-light-sensor-gpu/
-    ├── gotdot-light-sensor-gpu.gdextension
+godot-light-sensor-gpu-{debug|release}-install/
+└── godot-light-sensor-gpu/
+    ├── godot-light-sensor-gpu.gdextension
     ├── lib/
     │   └── {platform}-{architecture}/
-    │       └── libgotdot-light-sensor-gpu.{so|dll|dylib}
+    │       └── libgodot-light-sensor-gpu.{so|dll|dylib}
     └── icons/
         └── Example.svg
 ```
 
 ### Platform-Specific Library Locations
 
-- **macOS**: `lib/Darwin-universal/libgotdot-light-sensor-gpu.dylib`
-- **Linux**: `lib/Linux-x86_64/libgotdot-light-sensor-gpu.so`
-- **Windows**: `lib/Windows-x86_64/gotdot-light-sensor-gpu.dll`
+- **macOS**: `lib/Darwin-universal/libgodot-light-sensor-gpu.dylib`
+- **Linux**: `lib/Linux-x86_64/libgodot-light-sensor-gpu.so`
+- **Windows**: `lib/Windows-x86_64/godot-light-sensor-gpu.dll`
 
 ## CMake Options
 
@@ -201,8 +201,8 @@ The project supports several CMake options for customization:
 | `CMAKE_INSTALL_PREFIX` | Installation directory | System default |
 | `CCACHE_PROGRAM` | Path to ccache for faster rebuilds | Auto-detected |
 | `CLANG_FORMAT_PROGRAM` | Path to clang-format for code formatting | Auto-detected |
-| `GOTDOT_LIGHT_SENSOR_GPU_WARN_EVERYTHING` | Enable all compiler warnings | OFF |
-| `GOTDOT_LIGHT_SENSOR_GPU_WARNING_AS_ERROR` | Treat warnings as errors | ON |
+| `GODOT_LIGHT_SENSOR_GPU_WARN_EVERYTHING` | Enable all compiler warnings | OFF |
+| `GODOT_LIGHT_SENSOR_GPU_WARNING_AS_ERROR` | Treat warnings as errors | ON |
 
 ## Additional CMake Targets
 
@@ -215,10 +215,10 @@ The project provides several useful CMake targets:
 
 ```bash
 # Format code
-cmake --build gotdot-light-sensor-gpu-debug --target clang-format
+cmake --build godot-light-sensor-gpu-debug --target clang-format
 
 # Clean build
-cmake --build gotdot-light-sensor-gpu-debug --target clean
+cmake --build godot-light-sensor-gpu-debug --target clean
 ```
 
 ## Troubleshooting
@@ -255,7 +255,7 @@ cmake --build gotdot-light-sensor-gpu-debug --target clean
 
 To use the built extension in your Godot project:
 
-1. Copy the entire `gotdot-light-sensor-gpu` directory from your install location to your Godot project's `addons/` folder
+1. Copy the entire `godot-light-sensor-gpu` directory from your install location to your Godot project's `addons/` folder
 2. Enable the extension in Godot's Project Settings → Plugins
 3. The extension classes will be available in your GDScript code
 
@@ -270,9 +270,9 @@ For development, it's recommended to:
 
 ```bash
 # Clean previous builds
-rm -rf gotdot-light-sensor-gpu-debug gotdot-light-sensor-gpu-release
+rm -rf godot-light-sensor-gpu-debug godot-light-sensor-gpu-release
 
 # Rebuild from scratch
-cmake -B gotdot-light-sensor-gpu-debug -DCMAKE_BUILD_TYPE=Debug .
-cmake --build gotdot-light-sensor-gpu-debug --parallel 8
+cmake -B godot-light-sensor-gpu-debug -DCMAKE_BUILD_TYPE=Debug .
+cmake --build godot-light-sensor-gpu-debug --parallel 8
 ```

@@ -27,7 +27,7 @@ if ( APPLE )
 endif()
 
 # Main project information
-project( gotdot-light-sensor-gpu
+project( godot-light-sensor-gpu
     LANGUAGES
         CXX
     VERSION
